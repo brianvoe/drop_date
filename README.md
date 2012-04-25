@@ -1,7 +1,7 @@
 dropdate
 ========
 
-A simple input field to seperate drop down selects.
+A simple jquery plugin to convert an input field into seperate month,day,year dropdowns and update the original input field with newly selected values.
 
 ## Example:
 
