@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>jQuery Date Dropdown Plugin</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="dropdate.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.dropdate').dropdate({
+				monthclass: 'input',
+				dayclass: 'input',
+				yearclass: 'input',
+				placeholder: false,
+				onUpdate: function(){
+					
+				}
+			});
+		});
+		</script>
+		<style>
+		.input {
+		    padding: 6px;
+		    background-color: #fff;
+		    border: 1px solid #d5d5d5;
+		    color: #333;
+		    border-radius: 4px;
+		    -moz-border-radius: 4px;
+		    -webkit-border-radius: 4px;
+		    box-shadow: inset 2px 2px 2px #eeeeee;
+		    -moz-box-shadow: inset 2px 2px 2px #eeeeee;
+		    -webkit-box-shadow: inset 2px 2px 2px #eeeeee;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Drop Date</h1>
+		<h2>Turns input field into a 3 date dropdown.</h2>
+		<input type="field" class="dropdate" name="birthdate" value="2012-03-05" />
+		<br />
+		<input type="hidden" class="dropdate" name="holidaydate">
+		<br />
+		<input type="text" class="dropdate" name="eventdate" />
+	</body>
+</html>
