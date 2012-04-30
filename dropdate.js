@@ -81,10 +81,18 @@
 
             /* Override values from input */
             if(info.options.pullinput && info.items.main.val() != ''){
-                input_val = info.items.main.val().split('-');
-                info.options.monthvalue = parseInt(input_val[1]);
-                info.options.dayvalue = parseInt(input_val[2]);
-                info.options.yearvalue = parseInt(input_val[0]);
+                /* Check if valid */
+                if(info.valid_date()){
+                    input_val = info.items.main.val().split('-');
+                    info.options.monthvalue = parseInt(input_val[1]);
+                    info.options.dayvalue = parseInt(input_val[2]);
+                    info.options.yearvalue = parseInt(input_val[0]);
+                } else {
+                    /* If not valid use current date */
+                    info.options.monthvalue = today_month;
+                    info.options.dayvalue = today_day;
+                    info.options.yearvalue = today_year;
+                }
             }
 
             /* Get number of days */
@@ -186,6 +194,14 @@
 
             /* Remove data from input field */
             $.removeData(this, 'dropdate');
+        },
+        valid_date: function() {
+            var info = this;
+            var date = $(info.items.main).val();
+
+            var items = date.split('-');
+            var d = new Date(items[0] + '-' + items[1] + '-' + items[2]);
+            return !!(d && (d.getMonth() + 1) == items[1] && d.getDate() == Number(items[0]));
         },
         update_num_days: function() {
             var info = this;
