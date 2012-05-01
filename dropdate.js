@@ -208,27 +208,19 @@
                 var source_date = new Date(year,month,day);
 
                 if(year != source_date.getFullYear()) {
-                    if (typeof console == "object") {
-                        console.warn('Year is not valid. Defaulting to current date.');
-                    }
+                    // Year is not valid
                     return false;
                 }
                 if(month != source_date.getMonth()) {
-                    if (typeof console == "object") {
-                        console.warn('Month is not valid. Defaulting to current date.');
-                    }
+                    // Month is not valid
                     return false;
                 }
                 if(day != source_date.getDate()) {
-                    if (typeof console == "object") {
-                        console.warn('Day is not valid. Defaulting to current date.');
-                    }
+                    // Day is not valid
                     return false;
                 }
             } else {
-                if (typeof console == "object") {
-                    console.warn('Date format is not valid. Please use yyyy-mm-dd. Defaulting to current date.');
-                }
+                // Date format is not valid
                 return false;
             }
 
