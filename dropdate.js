@@ -199,9 +199,40 @@
             var info = this;
             var date = $(info.items.main).val();
 
-            var items = date.split('-');
-            var d = new Date(items[0] + '-' + items[1] + '-' + items[2]);
-            return !!(d && (d.getMonth() + 1) == items[1] && d.getDate() == Number(items[0]));
+            // Check format yyyy-mm-dd
+            if(date.match(/(\d{4})-(\d{2})-(\d{2})/)) {
+                var date_split = date.split('-');
+                var year = date_split[0];
+                var month = date_split[1] - 1;
+                var day = date_split[2];
+                var source_date = new Date(year,month,day);
+
+                if(year != source_date.getFullYear()) {
+                    if (typeof console == "object") {
+                        console.warn('Year is not valid. Defaulting to current date.');
+                    }
+                    return false;
+                }
+                if(month != source_date.getMonth()) {
+                    if (typeof console == "object") {
+                        console.warn('Month is not valid. Defaulting to current date.');
+                    }
+                    return false;
+                }
+                if(day != source_date.getDate()) {
+                    if (typeof console == "object") {
+                        console.warn('Day is not valid. Defaulting to current date.');
+                    }
+                    return false;
+                }
+            } else {
+                if (typeof console == "object") {
+                    console.warn('Date format is not valid. Please use yyyy-mm-dd. Defaulting to current date.');
+                }
+                return false;
+            }
+
+           return true;
         },
         update_num_days: function() {
             var info = this;
