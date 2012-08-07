@@ -84,9 +84,9 @@
                 /* Check if valid */
                 if(info.valid_date()){
                     input_val = info.items.main.val().split('-');
-                    info.options.monthvalue = parseInt(input_val[1]);
-                    info.options.dayvalue = parseInt(input_val[2]);
-                    info.options.yearvalue = parseInt(input_val[0]);
+                    info.options.monthvalue = parseInt(input_val[1], 10);
+                    info.options.dayvalue = parseInt(input_val[2], 10);
+                    info.options.yearvalue = parseInt(input_val[0], 10);
                 } else {
                     /* If not valid use current date */
                     info.options.monthvalue = today_month;
@@ -224,7 +224,7 @@
                 return false;
             }
 
-           return true;
+            return true;
         },
         update_num_days: function() {
             var info = this;
