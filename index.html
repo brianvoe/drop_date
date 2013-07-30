@@ -16,6 +16,13 @@
 					
 				}
 			});
+			$('.dropdate_reverse').dropdate({
+				monthclass: 'input',
+				dayclass: 'input',
+				yearclass: 'input',
+				placeholder: false,
+				yearreverse: true
+			});
 		});
 		</script>
 		<style>
@@ -40,6 +47,6 @@
 		<br />
 		<input type="hidden" class="dropdate" name="holidaydate">
 		<br />
-		<input type="text" class="dropdate" name="eventdate" />
+		<input type="text" class="dropdate_reverse" name="eventdate" />
 	</body>
 </html>

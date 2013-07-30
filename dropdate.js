@@ -35,6 +35,7 @@
         yearplaceholder: '--Year--', /* If placeholder: true, then this is the shown text for year */
         yearstart: '', /* Year start value - Must be 4 digit number */
         yearend: '', /* Year end value - Must be 4 digit number */
+        yearreverse : false, /* Reverse the order years are in */
         /* Events */
         onCreate: null, /* On create event */
         onUpdate: null /* On update event - Not initiated upon creation */
@@ -124,8 +125,14 @@
             /* Create year dropdown */
             year_str = '<select id="'+info.options.yearid+'" class="'+info.options.yearclass+'" '+(info.options.yearstyle != '' ? 'style="'+info.options.yearstyle+'"': '')+' name="">';
             year_str += (info.options.placeholder ? '<option value="">'+info.options.yearplaceholder+'</option>': '');
-            for (var y=info.options.yearstart; y<=info.options.yearend; y++) {
-                year_str += '<option value="'+y+'" '+(info.options.yearvalue == y ? 'selected="selected"': '')+'>'+y+'</option>';
+            if(info.options.yearreverse) {
+                for (var y=info.options.yearend; y>=info.options.yearstart; y--) {
+                    year_str += '<option value="'+y+'" '+(info.options.yearvalue == y ? 'selected="selected"': '')+'>'+y+'</option>';
+                }
+            } else {
+                for (var y=info.options.yearstart; y<=info.options.yearend; y++) {
+                    year_str += '<option value="'+y+'" '+(info.options.yearvalue == y ? 'selected="selected"': '')+'>'+y+'</option>';
+                }
             }
             year_str += '</select>';
             info.items.year = $(year_str);
